@@ -1,0 +1,279 @@
+    <!-- shoppingCart.ejs:广告页面 -->
+    <!-- 关键技术：1.轮播图；2.点击查看下一款促销商品； -->
+    <!--1.轮播图：在HTML中，将三张图片以img标签的形式插入到carousel容器中。
+        在CSS中，设置carousel容器为相对定位(position: relative)，
+        每个图片为绝对定位(position: absolute)，并添加“slide”动画效果。通过animation-delay属性来控制每个图片的出现时间，
+        从而实现轮播效果。  -->
+
+    <!-- 2.点击查看下一款促销商品:在HTML中，将促销商品信息以div标签的形式插入到promotion容器中。
+        在JavaScript中，通过querySelector()方法获取各个元素的引用，并定义changePromotion()函数来切换促销商品。
+        在函数中，通过判断当前显示的促销商品图片的src属性来切换到下一张图片，同时更新其他元素的内容。
+        最后，将函数绑定到按钮的click事件上，在用户点击按钮时触发函数。 -->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>游戏广告页面</title>
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("/images/pic_background_Products.png");
+    background-size: cover;
+    background-position: center;
+    }
+
+    .header {
+    background-color: #0973c4;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 45px;
+    }
+
+    .carousel {
+    max-width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+
+    }
+
+    .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    animation: slide 9s infinite;
+    }
+    .carousel-img:nth-child(1) {
+    animation-delay: 0s; /* 图片1从0秒开始 */
+    }
+
+    .carousel-img:nth-child(2) {
+    animation-delay: 4s; /* 图片2从4秒开始*/
+    }
+
+    .carousel-img:nth-child(3) {
+    animation-delay: 6s; /* 图片3从6秒开始 */
+    }
+    @keyframes slide {
+    0% { opacity: 1; }
+    50% { opacity: 0; } 
+    100% { opacity: 1; }
+    }
+
+    .content {
+    padding: 20px;
+    text-align: center;
+
+    border-top: 2px solid #0973c4;
+    border-bottom: 2px solid #0973c4;
+    background-color: #f1c147;
+    }
+
+    .advertisement {      
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffffff; 
+    font-weight: bold;
+    }
+
+    .game-item {
+    display: inline-block;
+    margin: 10px;
+    width: 30%;
+    text-align: left;
+    }
+
+    .game-image {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    }
+
+    .game-title {
+    color: #0973c4;
+    font-size: 18px;
+    font-weight: bold;
+    }
+
+    .game-description {
+    color: #555;
+    font-weight: bold;
+    }
+
+    .game-title-small {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0973c4;
+    text-align: left;
+    }
+
+    .separator {
+    width: 100%;
+    border-bottom: 1px solid #f9ef2d;
+    margin: 10px 0;
+    }
+
+    .footer {
+    background-color: #0973c4;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    }
+
+    .promotion {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .promotion-image {
+    width: 50%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    }
+
+    .promotion-title {
+    color: #555;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    }
+
+    .promotion-price {
+    color: #999;
+    text-decoration: line-through;
+    margin-top: 5px;
+    }
+
+    .current-price {
+    color: #333;
+    font-weight: bold;
+    margin-top: 5px;
+    }
+
+    .promotion-button {
+    background-color: #0973c4;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    }
+
+    .pinna-layout {
+    display: flex;
+    justify-content: space-between;
+    }
+    </style>
+    </head>
+    <body>
+    <div class="header">
+    <h1># GameMall史低 #</h1>
+    </div>
+
+    <div class="carousel">
+    <img class="carousel-img" src="/images/shop_banner1.jpg" alt="轮播图1">
+    <img class="carousel-img" src="/images/shop_banner2.jpg" alt="轮播图2">
+    <img class="carousel-img" src="/images/shop_banner3.jpg" alt="轮播图3">
+    </div>
+    <div class="content">
+
+        <br><br>
+
+
+    <div class="separator"></div>
+    <div class="advertisement"><strong>##（12.18~12.25）圣诞季冬促游戏商品 ##</strong></div>
+    <div class="separator"></div>
+
+    <div class="pinna-layout">
+            <div class="game-item">
+            <div class="game-image" style="background-image: url('/images/shop_banner3.jpg');"></div>
+            <div class="game-title">赛尔达传说（The Legend of Zelda Ⅰ）</div>
+            <div class="game-description">一款经典的冒险游戏。玩家将扮演主角林克（Link），探索一个神秘的王国，寻找被诅咒的公主，并拯救整个世界。游戏以其精美的画面、丰富的剧情和刺激的战斗闻名于世。原价为$58.8，现在正在促销，只需$30.0即可购买。快来体验这个史诗级的冒险故事吧！</div>
+            </div>
+
+            <div class="game-item">
+            <div class="game-image" style="background-image: url('/images/shop_banner2.jpg');"></div>
+            <div class="game-title">饼豆人（Candy Crush）</div>
+            <div class="game-description">一款休闲益智游戏。玩家需要通过交换糖果的位置，消除相同颜色的糖果，完成各种关卡目标。游戏具有简单易懂的玩法和可爱精美的画面，非常适合放松和消磨时间。原价为$14.9，现在正在促销，只需$8.8即可购买。</div>
+            </div>
+
+            <div class="game-item">
+            <div class="game-image" style="background-image: url('/images/shop_banner1.jpg');"></div>
+            <div class="game-title">超级牛里奥兄弟（Super Mario Bros.）</div>
+            <div class="game-description">任天堂经典游戏系列之一。玩家扮演马里奥或路易吉，穿越各个关卡，挑战恶龙布奇，并救出被困的公主。游戏具有精彩的平台跳跃、冒险元素和生动的游戏世界，给玩家带来无尽的乐趣。原价为$89.9，现在正在促销，只需$50.0即可购买。</div>
+            </div>
+
+    </div>
+
+    <br><br><br>
+    <div class="separator"></div>
+    <div class="advertisement"><strong>正在促销！</strong></div>
+    <div class="separator"></div>
+    <div class="promotion">
+    <div class="promotion-title">赛尔达传说（The Legend of Zelda Ⅰ）</div>
+    <img class="promotion-image" src="/images/shop_banner3.jpg" alt="促销商品图片">
+    <div class="current-price">现价：$30.0</div>
+    <div class="promotion-price">原价：$58.8</div>
+    <button class="promotion-button" onclick="changePromotion()">点击查看下一款促销商品</button>
+    </div>
+
+
+    <div class="separator"></div>
+    </div>
+
+    <div class="footer">
+    <p>版权归我所有 © 2024 年</p>
+    </div>
+
+    <script>
+        // changePromotion()函数用于在点击按钮时切换促销商品的信息。
+    function changePromotion() {
+
+        // 使用document.querySelector()方法获取了四个元素的引用
+        var promotionImage = document.querySelector('.promotion-image');
+        var promotionTitle = document.querySelector('.promotion-title');
+        var promotionPrice = document.querySelector('.promotion-price');
+        var currentPrice = document.querySelector('.current-price');
+
+
+        // 接下来，函数使用if-else语句来判断当前显示的促销商品图片的src属性，并根据不同的情况进行切换。
+        if (promotionImage.src.endsWith('shop_banner3.jpg')) {
+            promotionImage.src = '/images/shop_banner2.jpg';
+            promotionTitle.textContent = '饼豆人（Candy Crush）';
+            promotionPrice.textContent = '原价：$14.9';
+            currentPrice.textContent = '现价：$8.8';
+            // 如果promotionImage的src属性以shop_banner3.jpg结尾，说明当前显示的是第三张图片，
+            // 那么将图片的src属性更改为/images/shop_banner2.jpg，同时更新标题、原价和现价的文本内容为饼豆人（Candy Crush）的相关信息。
+        } else if (promotionImage.src.endsWith('shop_banner2.jpg')) {
+            promotionImage.src = '/images/shop_banner1.jpg';
+            promotionTitle.textContent = '超级牛里奥兄弟（Super Mario Bros.）';
+            promotionPrice.textContent = '原价：$89.9';
+            currentPrice.textContent = '现价：$50.0';
+            // 如果promotionImage的src属性以shop_banner2.jpg结尾，说明当前显示的是第二张图片，
+            // 那么将图片的src属性更改为/images/shop_banner1.jpg，同时更新标题、原价和现价的文本内容为超级牛里奥兄弟（Super Mario Bros.）的相关信息。
+        } else {
+            promotionImage.src = '/images/shop_banner3.jpg';
+            promotionTitle.textContent = '赛尔达传说（The Legend of Zelda Ⅰ）';
+            promotionPrice.textContent = '原价：$58.8';
+            currentPrice.textContent = '现价：$30.0';
+            // 如果以上两种情况都不满足，即当前显示的是第一张图片，那么将图片的src属性更改为/images/shop_banner3.jpg，
+            // 同时更新标题、原价和现价的文本内容为赛尔达传说（The Legend of Zelda Ⅰ）的相关信息。
+        }
+    }
+    </script>
+    </body>
+    </html>
