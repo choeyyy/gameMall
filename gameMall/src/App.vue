@@ -1,85 +1,195 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="game-ad">
+    <!-- 左侧导航栏 -->
+      <!-- 左侧导航栏 -->
+      <nav class="sidebar">
+          <h3>菜单</h3>
+          <router-link to="/home" class="sidebar-link">首页</router-link>
+          <router-link to="/page1" class="sidebar-link">页面1</router-link>
+          <router-link to="/page2" class="sidebar-link">页面2</router-link>
+          
+        </nav>
+    
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <!-- 右侧内容区域使用 <router-view> 来显示当前路由的组件 -->
+    <div class="content">
+      <router-view></router-view>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      games: [
+        {
+          title: '赛尔达传说（The Legend of Zelda Ⅰ）',
+          image: '/images/shop_banner3.jpg',
+          description: '一款经典的冒险游戏...'
+        },
+        {
+          title: '饼豆人（Candy Crush）',
+          image: '/images/shop_banner2.jpg',
+          description: '一款休闲益智游戏...'
+        },
+        {
+          title: '超级牛里奥兄弟（Super Mario Bros.）',
+          image: '/images/shop_banner1.jpg',
+          description: '任天堂经典游戏系列之一...'
+        }
+      ],
+      currentPromotion: {
+        title: '赛尔达传说（The Legend of Zelda Ⅰ）',
+        image: '/images/shop_banner3.jpg',
+        originalPrice: '$58.8',
+        currentPrice: '$30.0'
+      },
+      currentIndex: 0
+    };
+  },
+  methods: {
+    changePromotion() {
+      this.currentIndex = (this.currentIndex + 1) % this.games.length;
+      this.currentPromotion = this.games[this.currentIndex];
+    }
+  }
+};
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+/* 在这里添加CSS样式 */
+
+/* 更新CSS样式以实现左右布局 */
+.game-ad {
+  display: flex; /* 使用Flexbox布局整个页面 */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.layout {
   width: 100%;
-  font-size: 12px;
+  flex-direction: row; /* 设置Flexbox为行布局 */
+}
+
+.sidebar {
+  flex: 1; /* 导航栏占据较小的空间 */
+  background-color: #333; /* 导航栏背景颜色 */
+  color: white;
+  padding: 20px;
+  height: 100vh; /* 导航栏高度占满视口高度 */
+  position: fixed; /* 导航栏固定在页面左侧 */
+  overflow-y: auto; /* 允许垂直滚动 */
+}
+
+.sidebar-link {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+  padding: 5px 0;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+
+.content {
+  flex: 3; /* 内容区域占据较大的空间 */
+  padding: 20px;
+  margin-left: 200px; /* 为左侧导航栏留出空间 */
+  background-image: url("/images/pic_background_Products.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.header, .footer {
+  background-color: #0973c4;
+  color: #fff;
   text-align: center;
-  margin-top: 2rem;
+  padding: 20px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.header h1 {
+  font-size: 45px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.content {
+  padding: 20px;
+  background-image: url("/images/pic_background_Products.png");
+  background-size: cover;
+  background-position: center;
 }
 
-nav a {
+.separator {
+  width: 100%;
+  border-bottom: 1px solid #f9ef2d;
+  margin: 10px 0;
+}
+
+.advertisement {
+  font-size: 50px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ffffff;
+  font-weight: bold;
+}
+
+.game-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-item {
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  margin: 10px;
+  width: 30%;
+  text-align: left;
 }
 
-nav a:first-of-type {
-  border: 0;
+.game-image {
+  width: 100%;
+  height: 200px; /* 根据需要调整高度 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.game-title {
+  color: #0973c4;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.game-description {
+  color: #555;
+  font-weight: bold;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.promotion {
+  margin-top: 20px;
+  text-align: center;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+.promotion-image {
+  width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.promotion-title, .current-price, .promotion-price {
+  color: #555;
+  font-weight: bold;
+}
+
+.promotion-button {
+  background-color: #0973c4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer p {
+  padding: 10px;
 }
 </style>
