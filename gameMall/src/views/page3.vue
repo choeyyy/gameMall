@@ -28,7 +28,7 @@
         name: 'Page3',
         methods: {
             handleButtonClick() {
-                alert('你点击了按钮！');
+                alert('我还没吃饭，但是我喝了豆乳米麻薯！只是还想吃火锅。');
                 // 这里可以添加按钮点击后的逻辑
             }
         }
