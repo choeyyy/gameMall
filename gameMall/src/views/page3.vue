@@ -6,6 +6,15 @@
         <div class="content">
             <h2>黄同学</h2>
             <p>今天天气很好</p>
+            <div class="card">
+                <p>今天天气很好，吃饭了吗？</p>
+            </div>
+            <div class="card">
+                <p>今天天气很好，吃饭了吗？</p>
+            </div>
+            <div class="card">
+                <p>今天天气很好，吃饭了吗？</p>
+            </div>
             <button @click="handleButtonClick">点击</button>
         </div>
         <div class="footer">
