@@ -3,6 +3,7 @@ import Home from '../views/home.vue';
 import Page1 from '../views/page1.vue';
 import Page2 from '../views/page2.vue';
 import Page3 from '../views/page3.vue';
+import Page4 from '../views/page4.vue';
 import Welcome from '../views/welcome.vue';
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/page3',
     name: 'Page3',
     component: Page3
+  },
+  {
+    path: '/page4',
+    name: 'Page4',
+    component: Page4
   },
   {
     path: '/home',
