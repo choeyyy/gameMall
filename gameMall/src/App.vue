@@ -7,7 +7,8 @@
           <router-link to="/home" class="sidebar-link">首页</router-link>
           <router-link to="/page1" class="sidebar-link">页面1</router-link>
           <router-link to="/page2" class="sidebar-link">页面2</router-link>
-          
+          <router-link to="/page3" class="sidebar-link">页面3</router-link>
+          <router-link to="/page4" class="sidebar-link">页面4</router-link>
         </nav>
     
 
