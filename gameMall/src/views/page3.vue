@@ -7,13 +7,13 @@
             <h2>黄同学</h2>
             <p>今天天气很好</p>
             <div class="card">
-                <p>今天天气很好，吃饭了吗？</p>
+                <p>吃饭了吗？</p>
             </div>
             <div class="card">
-                <p>今天天气很好，吃饭了吗？</p>
+                <p>多喝温水。</p>
             </div>
             <div class="card">
-                <p>今天天气很好，吃饭了吗？</p>
+                <p>平安健康。</p>
             </div>
             <button @click="handleButtonClick">点击</button>
         </div>
