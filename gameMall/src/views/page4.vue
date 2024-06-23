@@ -1,7 +1,7 @@
 <template>
     <div class="page1">
       <div class="header">
-        <h1>页面 1</h1>
+        <h1>页面 5</h1>
       </div>
       <div class="content">
         <h2>这是页面 4 的内容标题</h2>
